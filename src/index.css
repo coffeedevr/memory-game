@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px
+}
+
+.pokecards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+}
+
+.pokecards > img {
+  height: 200px;
+  width: 200px;
+}
