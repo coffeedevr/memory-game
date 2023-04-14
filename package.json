@@ -41,5 +41,5 @@
   "devDependencies": {
     "gh-pages": "^5.0.0"
   },
-  "homeplage": "http://coffeedev.github.io/react-gh-pages"
+  "homepage": "https://coffeedevr.github.io/memory-game/"
 }

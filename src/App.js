@@ -11,6 +11,14 @@ const App = () => {
 
   // fetch poke-data during mount stage
   useEffect(() => {
+    let randomArray = [];
+    while(randomArray.length <= 10) {
+      let random = Math.round(Math.random() * 100) + 1;
+      if(randomArray.indexOf(random) === -1) {
+        randomArray.push(random);
+      }
+    }
+
     const fetchData = async (url) => {
       try {
         const response = await fetch(url)
@@ -24,8 +32,8 @@ const App = () => {
     const pokeList = async () => {
       let arr = []
 
-      for (let i = 199; i <= 208; i++) {
-        const url = 'https://pokeapi.co/api/v2/pokemon/' + i
+      for (let i = 0; i <= 9; i++) {
+        const url = 'https://pokeapi.co/api/v2/pokemon/' + randomArray[i]
         arr.push(await fetchData(url))
       }
       return arr
