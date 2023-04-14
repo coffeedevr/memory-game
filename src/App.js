@@ -9,7 +9,7 @@ const App = () => {
   const [cardTrack, setCardTrack] = useState([])
   const [cards, setCards] = useState([])
   const [game, setGame] = useState(false)
-  // const [over, setOver] = useState(false)
+  const [over, setOver] = useState(false)
 
   // fetch poke-data during mount stage
   useEffect(() => {
@@ -48,13 +48,14 @@ const App = () => {
   }, [])
 
   // empty callback to re-render when score and cardTrack updates
-  useEffect(() => {}, [score, cardTrack, bestScore, game])
+  useEffect(() => {}, [score, cardTrack, bestScore, game, over])
 
   const selectCard = (event) => {
     const check = event.target.id
     const result = cardTrack.filter(item => item === check)
 
     if (result.length >= 1 ) { 
+      setOver(true)
       setScore(0)
       setCardTrack([])
     } else { 
@@ -68,22 +69,27 @@ const App = () => {
 
   const LoadGame = (props) => {
     console.log(props.game)
-    return props.game ? <LoadCard cards={cards}/> : <Menu />
+    return props.game ? <LoadCard cards={cards} over={over}/> : <Menu />
   }
 
   const Menu = () => {
     return <div className="menu">
-      <h1 id='instructions-header'>Instructions:</h1>
-      <p id='instructions'>
+      <h1 className='menu-header'>Instructions:</h1>
+      <p className='menu-text'>
         There will be 10 random Pokemon that will display on your screen.<br/>
         The goal is to pick ALL Pokemons without picking them twice.<br/>
         Every time you click a Pokemon, their positions will be shuffled.
       </p>
-      <button id="start-game" type="button" onClick={()=>{setGame(true)}}>START GAME</button>
+      <button className="btn-game" type="button"
+      onClick={()=>{
+        setGame(true)
+        setOver(false)
+      }}>START GAME</button>
       </div>
   }
 
   const LoadCard = (props) => {
+   if (props.over === false) {
    return (
     <div className="LoadGame">
       {Lodash.shuffle(props.cards).map(pokemon =>
@@ -91,6 +97,15 @@ const App = () => {
       )}
     </div>
     )
+   } else {
+    return (
+      <div className="menu">
+        <h1 className="menu-header">Game Over!</h1>
+        <h2 className="menu-text">Wanna try again?</h2>
+        <button className="btn-game" type="button" onClick={()=>{setGame(false)}}>RESTART</button>
+      </div>
+    )
+   }
   }
 
   return (
@@ -100,7 +115,7 @@ const App = () => {
       {/* {Lodash.shuffle(cards).map(pokemon =>
           <div className='pokecards' key={pokemon[0]}><img src={pokemon[2]} id={pokemon[0]} onClick={selectCard} alt={"picture of " + pokemon[1]}/>{pokemon[1]}</div>
         )} */}
-        <LoadGame game={game}/>
+        <LoadGame game={game} over={over}/>
       </div>
       <Footer />
     </>

@@ -102,19 +102,19 @@ code {
   align-items: center;
 }
 
-#instructions-header {
+.menu-header {
   font-family: 'Alkatra';
   margin-bottom: 0px;
   font-size: 3rem;
 }
 
-#instructions {
+.menu-text {
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-family: 'Gentium Book Plus';
 }
 
-#start-game {
+.btn-game {
   font-size: 2rem;
   padding: 20px;
   font-family: 'Gentium Book Plus';
@@ -124,7 +124,7 @@ code {
   box-shadow: 2px 2px 2px rgb(0, 0, 0);
 }
 
-#start-game:hover {
+.btn-game:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
