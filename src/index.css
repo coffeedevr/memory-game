@@ -11,11 +11,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: .5fr 3fr 1fr
 }
 
 .header-component {
@@ -26,6 +34,8 @@ code {
   box-shadow: 0 4px 2px -2px gray;
   margin-bottom: 0px;
   font-family: 'Gentium Book Plus';
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
 }
 
 #header-text {
@@ -62,6 +72,16 @@ code {
   align-items: center;
 }
 
+.App {
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+}
+
+.round-text {
+  text-align: center;
+  font-family: 'Gentium Book Plus';
+}
+
 .pokecards {
   display: flex;
   flex-direction: column;
@@ -90,9 +110,10 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  grid-row: 3 / 4;
+  grid-column: 1 / 2;
+  margin-top: auto;
 }
 
 .menu {

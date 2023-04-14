@@ -10,7 +10,7 @@ const App = () => {
   const [cards, setCards] = useState([])
   const [game, setGame] = useState(false)
   const [over, setOver] = useState(false)
-
+  const [round, setRound] = useState(1)
   // fetch poke-data during mount stage
   useEffect(() => {
     let randomArray = [];
@@ -45,7 +45,7 @@ const App = () => {
       const list = await pokeList()
       setCards(list)
     })();
-  }, [])
+  }, [round])
 
   // empty callback to re-render when score and cardTrack updates
   useEffect(() => {}, [score, cardTrack, bestScore, game, over])
@@ -63,13 +63,17 @@ const App = () => {
       if ((score + 1) >= bestScore) {
          setBestScore(score + 1)
       }
-      setCardTrack(cardTrack.concat(check))
+      if  ((score + 1)  === ( 10 * round)) {
+        setCardTrack([])
+        setRound(2)
+      } else {
+        setCardTrack(cardTrack.concat(check))
+      }
     }
   }
 
   const LoadGame = (props) => {
-    console.log(props.game)
-    return props.game ? <LoadCard cards={cards} over={over}/> : <Menu />
+    return props.game ? <LoadCard cards={cards} over={over} round={round}/> : <Menu />
   }
 
   const Menu = () => {
@@ -91,11 +95,16 @@ const App = () => {
   const LoadCard = (props) => {
    if (props.over === false) {
    return (
+    <>
+    <div className="round-container">
+      <h1 className="round-text">Round {props.round}</h1>
+    </div>
     <div className="LoadGame">
       {Lodash.shuffle(props.cards).map(pokemon =>
         <div className='pokecards' key={pokemon[0]}><img src={pokemon[2]} id={pokemon[0]} onClick={selectCard} alt={"picture of " + pokemon[1]}/>{pokemon[1]}</div>
       )}
     </div>
+    </>
     )
    } else {
     return (
@@ -112,9 +121,6 @@ const App = () => {
     <>
       <Header score={score} bestScore={bestScore}/>
       <div className="App">
-      {/* {Lodash.shuffle(cards).map(pokemon =>
-          <div className='pokecards' key={pokemon[0]}><img src={pokemon[2]} id={pokemon[0]} onClick={selectCard} alt={"picture of " + pokemon[1]}/>{pokemon[1]}</div>
-        )} */}
         <LoadGame game={game} over={over}/>
       </div>
       <Footer />
