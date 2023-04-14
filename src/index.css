@@ -52,7 +52,7 @@ code {
   height: 50px;
 }
 
-.App {
+.LoadGame {
   margin-top: 15px;
   display: flex;
   flex-wrap: wrap;
@@ -90,5 +90,41 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
   bottom: 0;
+  width: 100%;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#instructions-header {
+  font-family: 'Alkatra';
+  margin-bottom: 0px;
+  font-size: 3rem;
+}
+
+#instructions {
+  text-align: center;
+  font-size: 1.3rem;
+  font-family: 'Gentium Book Plus';
+}
+
+#start-game {
+  font-size: 2rem;
+  padding: 20px;
+  font-family: 'Gentium Book Plus';
+  color: white;
+  background-color: rgb(65, 65, 65);
+  border: none;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
+
+#start-game:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
