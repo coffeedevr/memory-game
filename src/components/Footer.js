@@ -4,7 +4,7 @@ function Footer () {
     const footerText = '© ' + new Date().getFullYear() + ' coffeedevr | '
 
     return <div className="footer-component">
-        <p id='footer-text'>{footerText}</p>
+        <p id="footer-text">{footerText}</p>
     </div>
 }
 

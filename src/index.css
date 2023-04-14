@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  flex-direction: column;
 }
 
 code {
@@ -12,11 +15,36 @@ code {
     monospace;
 }
 
+.header-component {
+  text-align: center;
+  background-color: rgba(223, 60, 60, 0.815);
+  color: rgb(255, 230, 1);
+  padding: 20px
+}
+
+#header-text {
+  margin: 0;
+  font-size: 4rem;
+}
+
+#score-text {
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
+#footer-text {
+  text-align: center;
+}
+
 .App {
+  margin-top: 15px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px
+  gap: 30px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 .pokecards {
@@ -24,10 +52,18 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
+  gap: 20px;
+  padding: 25px;
+  border: 1px groove rgb(134, 123, 123);
+  border-radius: 50px;
 }
 
 .pokecards > img {
   height: 200px;
   width: 200px;
+}
+
+.pokecards > img:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
