@@ -111,7 +111,10 @@ const App = () => {
       <div className="menu">
         <h1 className="menu-header">Game Over!</h1>
         <h2 className="menu-text">Wanna try again?</h2>
-        <button className="btn-game" type="button" onClick={()=>{setGame(false)}}>RESTART</button>
+        <button className="btn-game" type="button" onClick={()=>{
+          setGame(false)
+          setRound(1)
+          }}>RESTART</button>
       </div>
     )
    }
