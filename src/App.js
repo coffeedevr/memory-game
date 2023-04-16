@@ -10,9 +10,10 @@ const App = () => {
   const [cards, setCards] = useState([])
   const [game, setGame] = useState(false)
   const [over, setOver] = useState(false)
-  const [round, setRound] = useState(1)
+  const [round, setRound] = useState(0)
   // fetch poke-data during mount stage
   useEffect(() => {
+    console.log('hi')
     let randomArray = [];
     while(randomArray.length <= 10) {
       let random = Math.round(Math.random() * 100) + 1;
@@ -65,7 +66,7 @@ const App = () => {
       }
       if  ((score + 1)  === ( 10 * round)) {
         setCardTrack([])
-        setRound(2)
+        setRound(round + 1)
       } else {
         setCardTrack(cardTrack.concat(check))
       }
@@ -88,6 +89,7 @@ const App = () => {
       onClick={()=>{
         setGame(true)
         setOver(false)
+        setRound(1)
       }}>START GAME</button>
       </div>
   }
@@ -113,7 +115,6 @@ const App = () => {
         <h2 className="menu-text">Wanna try again?</h2>
         <button className="btn-game" type="button" onClick={()=>{
           setGame(false)
-          setRound(1)
           }}>RESTART</button>
       </div>
     )
