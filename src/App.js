@@ -140,9 +140,7 @@ const App = () => {
       <Header score={score} bestScore={bestScore}/>
       <div className="App">
         {/* <LoadGame round={round} game={game} over={over} cards={cards} setGame={setGame} setOver={setOver} setCards={setCards} setRound={setRound}  selectCard={selectCard} fetchPoke={fetchPoke}/> */}
-        game ?
-        <LoadCard cards={cards} over={over} round={round} selectCard={selectCard} setRound={setRound} setCards={setCards} setGame={setGame}/> 
-        : <Menu setGame={setGame}  setOver={setOver} fetchPoke={fetchPoke}/>
+        {game ?  <LoadCard cards={cards} over={over} round={round} selectCard={selectCard} setRound={setRound} setCards={setCards} setGame={setGame}/> : <Menu setGame={setGame}  setOver={setOver} fetchPoke={fetchPoke}/>}
       </div>
       <Footer />
     </>
